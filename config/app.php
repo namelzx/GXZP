@@ -19,7 +19,7 @@ return [
     // 应用地址
     'app_host'               => '',
     // 应用调试模式
-    'app_debug'              => false,
+    'app_debug'              => true,
     // 应用Trace
     'app_trace'              => false,
     // 是否支持多模块
@@ -142,5 +142,11 @@ return [
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '',
+    'aliyun_oss' => [
+        'KeyId'      => 'LTAI4G7m7lF5SkXU',  //您的Access Key ID
+        'KeySecret'  => 'PbcsuZTY2CMVPjr1K2DGzMejeotVTI',  //您的Access Key Secret
+        'Endpoint'   => 'oss-cn-hangzhou.aliyuncs.com',  //阿里云oss 外网地址endpoint
+        'Bucket'     => 'lzxgxzl',  //Bucket名称
+    ],
 
 ];
