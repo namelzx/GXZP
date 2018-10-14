@@ -3,36 +3,33 @@
  * Created by PhpStorm.
  * User: jon
  * Date: 2018/10/13
- * Time: 上午1:42
+ * Time: 下午4:59
  */
 
 namespace app\admin\controller;
 
-use app\admin\model\Banner as BannerData;
+use app\admin\model\Article as ArticleModel;
 
-class Banner extends Base
+
+class Article extends Base
 {
-    /**
-     * 获取轮播图列表
-     */
-    public function GetBannerByList()
+
+    public function GetDataByList()
     {
         $data = input('param.');
-        $res = BannerData::GetByList($data);
+        $res = ArticleModel::GetByList($data);
         return json($res);
-
     }
 
     /**
-     *  添加轮播图
+     *  添加数据
      */
-    public function PostBannerByData()
+    public function PostDataByAdd()
     {
         $data = input('param.');
-        $Model = new BannerData();
+        $Model = new ArticleModel();
         if (empty($data['id'])) {
             $data['create_time'] = time();
-            $data['status'] = 2;
             $res = $Model->allowField(true)->insertGetId($data);
             $return['time'] = time();
             $return['id'] = $res;
@@ -47,7 +44,7 @@ class Banner extends Base
     public function GetIdByDelete()
     {
         $data = input('param.');
-        $Model = new BannerData();
+        $Model = new ArticleModel();
         $res = $Model->where('id', $data['id'])->delete();
         return json($res);
     }
@@ -55,9 +52,19 @@ class Banner extends Base
     public function PostDataBystatus()
     {
         $data = input('param.');
-        $Model = new BannerData();
+        $Model = new ArticleModel();
         $res = $Model->where('id', $data['id'])->data($data)->update();
         return json($res);
     }
+
+    public function GetIdByFind()
+    {
+        $data=input('param.');
+        $Model = new ArticleModel();
+        $res=$Model->find($data['id']);
+        return json($res);
+
+    }
+
 
 }

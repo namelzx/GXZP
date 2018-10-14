@@ -3,36 +3,23 @@
  * Created by PhpStorm.
  * User: jon
  * Date: 2018/10/13
- * Time: 上午1:42
+ * Time: 下午2:34
  */
 
 namespace app\admin\controller;
 
-use app\admin\model\Banner as BannerData;
 
-class Banner extends Base
+use app\admin\model\Menu as MenuModel;
+
+class Menu extends Base
 {
-    /**
-     * 获取轮播图列表
-     */
-    public function GetBannerByList()
+    public function PostDataByAdd()
     {
-        $data = input('param.');
-        $res = BannerData::GetByList($data);
-        return json($res);
 
-    }
-
-    /**
-     *  添加轮播图
-     */
-    public function PostBannerByData()
-    {
         $data = input('param.');
-        $Model = new BannerData();
+        $Model = new MenuModel();
         if (empty($data['id'])) {
             $data['create_time'] = time();
-            $data['status'] = 2;
             $res = $Model->allowField(true)->insertGetId($data);
             $return['time'] = time();
             $return['id'] = $res;
@@ -41,23 +28,42 @@ class Banner extends Base
             $data['create_time'] = time();
             $res = $Model->where('id', $data['id'])->data($data)->update();
             return json($res);
+
         }
+    }
+
+    public function GetByList()
+    {
+        $data = input('param.');
+        $res = MenuModel::GetByList($data);
+        $Trre = MenuModel::all();
+        $arry = getTree($Trre);
+        $return = [];
+        foreach ($arry as $key => $item) {
+            $return[$key]['title'] = str_repeat('--', $item['level']) . $arry[$key]['title'];
+            $return[$key]['pid'] = $arry[$key]['id'];
+        }
+
+
+        return json(['data' => $res, 'Trre' => $return]);
     }
 
     public function GetIdByDelete()
     {
         $data = input('param.');
-        $Model = new BannerData();
+        $Model = new MenuModel();
         $res = $Model->where('id', $data['id'])->delete();
         return json($res);
     }
 
+
     public function PostDataBystatus()
     {
         $data = input('param.');
-        $Model = new BannerData();
+        $Model = new MenuModel();
         $res = $Model->where('id', $data['id'])->data($data)->update();
         return json($res);
     }
+
 
 }

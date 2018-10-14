@@ -9,18 +9,32 @@
 namespace app\admin\controller;
 
 
-use think\Controller;
 use OSS\Core\OssException;
 use Oss\OssClient;
+use think\Controller;
 use think\Image;
+
+use app\admin\model\Menu as MenuModel;
 
 header('Access-Control-Allow-Origin:*');
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, authKey, sessionId, Access-Token, X-Token");
+
 class Base extends Controller
 {
-
+    //获取分类列表
+    public function Tree()
+    {
+        $Trre = MenuModel::all();
+        $arry = getTree($Trre);
+        $return = [];
+        foreach ($arry as $key => $item) {
+            $return[$key]['title'] = str_repeat('--', $item['level']) . $arry[$key]['title'];
+            $return[$key]['pid'] = $arry[$key]['id'];
+        }
+        return json($return);
+    }
 
     public function upload()
     {
@@ -31,15 +45,15 @@ class Base extends Controller
         $info = $file->move('./uploads');
         if ($info) {
             //如果大于100k那么就是进行图片压缩
-            if ($info->getInfo()['size'] > 102436) {
-                $image = Image::open($info->getpathName());
-                $image->thumb(500, 500)->save($info->getpathName());
-                $fileName = 'uploads/' . $info->getSaveName();
-                $this->uploadFile('youalixing', $fileName, $info->getPathname());
-                return json(msg(200, $info->getSaveName(), '上传成功'));
-            }
+//            if ($info->getInfo()['size'] > 102436) {
+//                $image = Image::open($info->getpathName());
+//                $image->thumb(500, 500)->save($info->getpathName());
+//                $fileName = 'uploads/' . $info->getSaveName();
+//                $this->uploadFile('youalixing', $fileName, $info->getPathname());
+//                return json(msg(200, $info->getSaveName(), '上传成功'));
+//            }
             $fileName = 'uploads/' . $info->getSaveName();
-            $res= $this->uploadFile('lzxgxzl', $fileName, $info->getPathname());
+            $res = $this->uploadFile('lzxgxzl', $fileName, $info->getPathname());
             return json(msg(200, $info->getSaveName(), '1'));
         } else {
             // 上传失败获取错误信息
