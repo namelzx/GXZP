@@ -6,54 +6,25 @@ class Index extends Base
 {
     public function index()
     {
+        $qywh = db('article')->where('mid',21)->find();
+
+        $banner = db('banner')->select();
+        $news = db('article')->where('mid',12)->order('create_time')->limit(4)->select();
+        $res = db('menu')->where('pid', 1)->order('sort')->select();
+        $tweets = db('tweets')->where('status', 1)->order('create_time')->paginate(3);
+        $assign = [
+            'banner' => $banner,
+            'news' => $news,
+            'indexmune' => $res,
+            'tweets' => $tweets,
+            'qywh'=>$qywh
+        ];
+        $this->assign($assign);
         return view();
     }
 
     public function hello($name = 'ThinkPHP5')
     {
         return 'hello,' . $name;
-    }
-
-    public function pc()
-    {
-        $i = 140;
-        $url = "https://rzc.autohome.com.cn/api/CarOwnerCamp/GetBrandList"; //调用接口地址
-        $res = $this->Url($url);
-
-        $res_decode = json_decode($res);
-        $re = [];
-        foreach ($res_decode->result as $key => $item) {
-//            time_sleep_until(time() + 3); // 在20秒后执行后面代码
-            foreach ($res_decode->result[$key]->value as $k => $i) {
-                $re['key'] = $res_decode->result[$key]->key;
-                $re['name'] = $res_decode->result[$key]->value[$k]->name;
-                $re['logo'] = $res_decode->result[$key]->value[$k]->logo;
-                $re['id'] = $res_decode->result[$key]->value[$k]->id;
-                try {
-                    db('brand')->insertGetId($re);
-
-                } catch (Exception $exception) {
-
-                }
-            }
-        }
-
-        return json("wancheng");
-    }
-
-    public function Url($url)
-    {
-
-        $ch = curl_init();
-//        $url = "https://rzc.autohome.com.cn/api/CarOwnerCamp/GetSeriesList?brandId=" . $i; //调用接口地址
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-
-        $res = curl_exec($ch);
-        curl_close($ch);
-        return $res;
     }
 }

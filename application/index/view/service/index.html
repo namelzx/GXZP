@@ -1,0 +1,60 @@
+{include file="public/head"}
+
+<link href="__INDEX__/css/about.css" rel="stylesheet" type="text/css">
+<style>
+    .banner_about {
+        background: url("{$res.images_url}") no-repeat center center;
+        /*background-size: 100%;*/
+    }
+
+    .header {
+        height: 7.5em;
+    }
+    img{
+        width: 100%;
+    }
+    .banner {
+        padding: 31.15625% 0 0;
+    }
+
+    .main_content {
+        padding: 3% 0;
+    }
+
+</style>
+<div class="wrapper" id="wrapper">
+    <nav class="nav"><a href="/" class="gohome"><span class="hidden">返回</span>首页</a> <a
+            href="http://www.dflzm.com.cn/index.php/about">关于柳汽</a> <strong class="公司概况"><a
+            href="http://www.dflzm.com.cn/index.php/about">公司概况</a></strong></nav>
+    <div class="banner banner_about"></div>
+    <aside class="aside">
+        <menu class="secmenu" data-scroll_top="427" data-si="0" data-width="960" data-adsorbent="0">
+            <div class="secmenu_container">
+                <div class="secmenu_content" style="margin-left: auto;">
+                    <ul>
+                        {volist name='tomen' id="vo"}
+                        {if $vo.id==$id}
+                        <li class="current">
+                            {else /}
+                        <li>
+                            {/if}
+                            <a href="/{$vo.url}/id/{$vo.id}">{$vo.title}</a>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+            <a class="prev" onclick="secmenu_m(-1)"></a><a class="next" onclick="secmenu_m(1)"></a></menu>
+    </aside>
+    <div class="main_container">
+        <section class="main">
+            <!--<header class="main_header"><h1>公司概况</h1></header>-->
+            <div class="main_content">
+
+                {$res.content|raw}
+
+            </div>
+        </section>
+    </div>
+</div>
+{include file="public/footer"}

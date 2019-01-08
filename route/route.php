@@ -12,17 +12,13 @@
 Route::get('think', function () {
     return 'hello,ThinkPHP5!';
 });
-
 Route::get('hello/:name', 'index/hello');
-
 Route::post('Update', 'admin/index/upload');
-
 
 //后台管理酒店路由
 Route::group('admin/', function () {
 
-
-    Route::Post('User/Login', 'admin/admin/login');
+    Route::get('User/Login', 'admin/Admin/login');
     Route::post('Update', 'admin/index/upload');
 
     /** 轮播图路由 */
@@ -30,6 +26,12 @@ Route::group('admin/', function () {
     Route::Post('Banner/PostBannerByData', 'admin/banner/PostBannerByData');
     Route::Get('Banner/GetIdByDelete', 'admin/banner/GetIdByDelete');
     Route::Post('Banner/PostDataBystatus', 'admin/banner/PostDataBystatus');
+
+    /** 推文 */
+    Route::Get('Tweets/GetTweetsByList', 'admin/tweets/GetTweetsByList');
+    Route::Post('Tweets/PostTweetsByData', 'admin/tweets/PostTweetsByData');
+    Route::Get('Tweets/GetIdByDelete', 'admin/tweets/GetIdByDelete');
+    Route::Post('Tweets/PostDataBystatus', 'admin/tweets/PostDataBystatus');
     /** 菜单路由*/
     Route::Get('Menu/GetByList', 'admin/menu/GetByList');
     Route::Post('Menu/PostDataByAdd', 'admin/menu/PostDataByAdd');

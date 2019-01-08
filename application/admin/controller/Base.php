@@ -45,13 +45,6 @@ class Base extends Controller
         $info = $file->move('./uploads');
         if ($info) {
             //如果大于100k那么就是进行图片压缩
-//            if ($info->getInfo()['size'] > 102436) {
-//                $image = Image::open($info->getpathName());
-//                $image->thumb(500, 500)->save($info->getpathName());
-//                $fileName = 'uploads/' . $info->getSaveName();
-//                $this->uploadFile('youalixing', $fileName, $info->getPathname());
-//                return json(msg(200, $info->getSaveName(), '上传成功'));
-//            }
             $fileName = 'uploads/' . $info->getSaveName();
             $res = $this->uploadFile('lzxgxzl', $fileName, $info->getPathname());
             return json(msg(200, $info->getSaveName(), '1'));
@@ -59,10 +52,8 @@ class Base extends Controller
             // 上传失败获取错误信息
             echo $file->getError();
         }
-
         return json($file);
     }
-
 
     /**
      * 实例化阿里云OSS

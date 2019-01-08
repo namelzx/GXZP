@@ -1,0 +1,111 @@
+{include file="public/head"}
+
+<style>
+    .banner_about {
+        background: url("{$res.images_url}") no-repeat center center;
+        /*background-size: 100%;*/
+    }
+
+    .header {
+        height: 7.5em;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .banner {
+        padding: 31.15625% 0 0;
+    }
+
+    .main_content {
+        padding: 3% 0;
+    }
+
+    .pagination {
+        user-select: none;
+        list-style: none;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 0;
+        padding: 0;
+        margin: 0;
+        white-space: nowrap;
+        padding: 2px 5px;
+        color: #303133;
+        font-weight: 700;
+    }
+
+    .pagination > li {
+        padding: 0 4px;
+        /*background: #fff;*/
+        vertical-align: top;
+        display: inline-block;
+        font-size: 13px;
+        min-width: 35.5px;
+        height: 28px;
+        line-height: 28px;
+        cursor: pointer;
+        box-sizing: border-box;
+        text-align: center;
+        margin: 0;
+    }
+
+    .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+        /*z-index: 3;*/
+        /*color: #fff;*/
+        /*cursor: default;*/
+        /*background-color: #337ab7;*/
+        /*border-color: #337ab7;*/
+        color: #409eff;
+        cursor: default;
+    }
+</style>
+<div class="wrapper" id="wrapper">
+    <nav class="nav"><a href="/" class="gohome"><span class="hidden">返回</span>首页</a> <a
+            href="/">关于</a> <strong class="公司概况"><a
+            href="/">公司概况</a></strong></nav>
+    <div class="banner banner_about"></div>
+    <aside class="aside">
+        <menu class="secmenu" data-scroll_top="427" data-si="0" data-width="960" data-adsorbent="0">
+            <div class="secmenu_container">
+                <div class="secmenu_content" style="margin-left: auto;">
+                    <ul>
+                        {volist name='tomen' id="vo"}
+                        {if $vo.id==$id}
+                        <li class="current">
+                            {else /}
+                        <li>
+                            {/if}
+                            <a href="/{$vo.url}/id/{$vo.id}">{$vo.title}</a>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+            <a class="prev" onclick="secmenu_m(-1)"></a><a class="next" onclick="secmenu_m(1)"></a></menu>
+    </aside>
+    <div class="main_content">
+        <section class="main">
+            <div class="main_content">
+                <article class="column_newsinto">
+                    <header class="into_title">
+                        <hgroup>
+                            <h1>{$res.title}</h1>
+                        </hgroup>
+                        <div class="into_info">
+                            <time datetime="{$res.create_time|date='Y-m-d'}" pubdate="pubdate"><span
+                                    class="type">发布时间：</span>{$res.create_time|date='Y-m-d'}
+                            </time>
+                            <span class="form"><span class="type">作者：</span>{$res.author}</span></div>
+                        <a href="{:url('index/news/',['id'=>$res.mid])}" class="btn_backlist">返回列表</a></header>
+                    <div class="into_content">
+                        {$res.content|raw}
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </div>
+</div>
+{include file="public/footer"}

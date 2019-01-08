@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: jon
- * Date: 2018/10/12
- * Time: 下午11:04
+ * Date: 2018/10/26
+ * Time: 上午10:16
  */
 
 namespace app\admin\controller;
@@ -11,19 +11,8 @@ namespace app\admin\controller;
 
 use app\admin\model\AdminUser;
 
-
-
-header('Access-Control-Allow-Origin:*');
-header('Access-Control-Allow-Credentials: true');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, authKey, sessionId, Access-Token, X-Token");
-class Admin extends Base
+class User extends Base
 {
-    public function PostUserByAdd(){
-        $data=input('param.');
-        return json($data);
-    }
-
     public function login()
     {
         $data = input('post.');
@@ -31,7 +20,7 @@ class Admin extends Base
         if ($this->request->isPost()){
             $userModel = new AdminUser();
             $hasUser = $userModel->where('username', $data['username'])->find();
-            dump($hasUser);
+//            dump($hasUser);
             if (empty($hasUser)) {
                 return json(logomsg(0, '', '', '管理员不存在'));
             }

@@ -1,185 +1,130 @@
 {include file="public/head" /}
-    <section class="index_kv">
-        <div class="kv_container">
-            <div class="kv_content">
-                <!--banner尺寸：1920*818//-->
-                <ul id="indexkv">
+<link href="__INDEX__/css/index.css" rel="stylesheet" type="text/css">
+<style>
+    @font-face {
+        font-family: 'iconfont';  /* project id 890377 */
+        src: url('//at.alicdn.com/t/font_890377_v25l7endcel.eot');
+        src: url('//at.alicdn.com/t/font_890377_v25l7endcel.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_890377_v25l7endcel.woff') format('woff'),
+        url('//at.alicdn.com/t/font_890377_v25l7endcel.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_890377_v25l7endcel.svg#iconfont') format('svg');
+    }
+    .iconfont{
+        font-family:"iconfont" !important;
+        font-size:16px;font-style:normal;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-stroke-width: 0.2px;
+        -moz-osx-font-smoothing: grayscale;}
+    /*.column_indexmedia .mediaform{*/
+        /*background-image: url(/static/index/images/媒体合作.png);*/
 
-                    <li><a href="http://cars.fxauto.com.cn/T5/003/index.html?v=0056" target="_blank" data-id="26"><img
-                            src="http://dfcms.dflzm.com.cn/cmsuploads/lq_kvpicture/e76e0ccb1d2f44bf1cbf3b5cc959c9bb.jpg"
-                            alt=""/></a></li>
+    /*}*/
+</style>
+<link href="/static/index/css/index.css" rel="stylesheet" type="text/css">
+<section class="index_kv">
+    <div class="kv_container">
+        <div class="kv_content">
+            <!--banner尺寸：1920*818//-->
+            <ul id="indexkv">
+                {volist name="banner" id="vo"}
+                {if $vo.type==1}
+                <li><a href="{$vo.url}" target="_blank" data-id="26"><img
+                        src="{$vo.images_url}"
+                        alt="{$vo.title}"/></a></li>
+                {/if}
+                {/volist}
+            </ul>
+        </div>
+    </div>
+</section>
 
-                    <li><a href="http://www.fxauto.com.cn/index.php/car/info?cid=5" target="_blank" data-id="24"><img
-                            src="http://dfcms.dflzm.com.cn/cmsuploads/lq_kvpicture/5b6a5573dca798677e5967d2e9374cd8.jpg"
-                            alt=""/></a></li>
+<div class="wrapper" id="wrapper">
+    <nav class="nav"><a href="" class="gohome">首页</a></nav>
+    <div class="main_container">
 
-                    <li><a href="http://www.fxauto.com.cn/index.php/news/newsinto?id=677" target="_blank"
-                           data-id="22"><img
-                            src="http://dfcms.dflzm.com.cn/cmsuploads/lq_kvpicture/49dfd37a52147cb5af481131d31ba572.png"
-                            alt=""/></a></li>
+        <section class="column_indexnews">
+            <header class="column_title">
+                <h2>新闻</h2>
+                <a href="/index/news/index" class="more" title="更多新闻">更多内容</a>
+            </header>
+            <div class="column_content">
+                <!--新闻导图尺寸：640*360//-->
+                {volist name="news" id="nvo"}
+                <article>
+                    <a href="{:url('index/news/newsinfo',['id'=>$nvo.mid,'nid'=>$nvo.id])}"
+                       title="{$nvo.title}" target="_blank" data-id="481">
+                            <span class="img_container"><img
+                                    src="{$nvo.images_url}"
+                                    alt="{$nvo.title}"><span class="ie7img"></span></span>
+                        <span class="txt_container"><h3>{$nvo.title}</h3><time pubdate="pubdate"
+                                                                               datetime="{$nvo.create_time|date='Y-m-d'}">{$nvo.create_time|date="m-d"}</time></span>
+                    </a>
+                </article>
+                {/volist}
 
-                    <li><a href="zhanting/" target="_blank" data-id="14"><img
-                            src="http://www.dflzm.com.cn/uploadfiles/20171213/15131334996692.jpg" alt=""/></a></li>
+            </div>
+        </section>
 
-                    <li><a href="http://www.dflzm.com.cn/index.php/product/productinfo/14" target="_blank" data-id="11"><img
-                            src="http://www.dflzm.com.cn/uploadfiles/20160624/14667624346063.jpg" alt=""/></a></li>
+        <section class="column_indexvideo">
+            <header class="column_title">
+                <h2>视频</h2>
+            </header>
+            <div class="column_content">
 
-                    <li><a href="http://www.dflzm.com.cn/index.php/product/productinfo/11" target="_blank" data-id="12"><img
-                            src="http://www.dflzm.com.cn/uploadfiles/20160721/14690980708849.jpg" alt=""/></a></li>
+                {volist name="banner" id="hvo"}
+                {if $hvo.type==2}
+                <span class="videotxt"
+                      style="background-image:url({$hvo.images_url});"
+                      data-bimg="true">
+						<h3>{$hvo.title}</h3>
+						<p>{$hvo.desc}</p>
 
-                    <li><a href="http://cars.fxauto.com.cn/CM7/201807" target="_blank" data-id="17"><img
-                            src="http://dfcms.dflzm.com.cn/cmsuploads/lq_kvpicture/a38a1fb3bbf886a79828a5a7739eb75c.jpg"
-                            alt=""/></a></li>
+					</span>
+                {/if}
+                {/volist}
+
+            </div>
+        </section>
+        <section class="column_indexmedia">
+            <header class="column_title">
+                <h2>社交媒体</h2>
+            </header>
+            <div class="column_content">
+                {volist name='tweets' id="tvo"}
+                <article>
+                    <a href="{$tvo.url}"
+                       target="_blank" data-id="124" cig_tag="">
+                        <div class="txt_container">
+                            <p>{$tvo.desc}</p>
+                            <time pubdate="pubdate" datetime='$tvo.create_time|date="Y-m-d"}'>{$tvo.create_time|date="m-d"}</time>
+                            <span class="mediaform" data-bimg="true">
+                                <i class="iconfont">&#xe657;</i>
+																</span>
+                        </div>
+                    </a>
+                </article>
+                {/volist}
+
+
+            </div>
+        </section>
+
+
+        <section class="column_aboutus">
+            <header class="column_title">
+                <h2>品牌与服务</h2>
+            </header>
+            <div class="column_content">
+                <ul>
+                    {volist name="footer" id="mvo" key="k" offset="0" length='6'}
+                    <li><a style="background-image:url('{$mvo.images_url}')" class="aboutus_{$k}" data-bimg="true"
+                           href="/{$mvo.url}"><span>{$mvo.title}</span></a></li>
+                    {/volist}
+
                 </ul>
             </div>
-        </div>
-    </section>
-
-    <div class="wrapper" id="wrapper">
-        <nav class="nav"><a href="" class="gohome">首页</a></nav>
-        <div class="main_container">
-
-            <section class="column_indexnews">
-                <header class="column_title">
-                    <h2>新闻</h2>
-                    <a href="http://www.dflzm.com.cn/index.php/news" class="more" title="更多新闻">更多内容</a>
-                </header>
-                <div class="column_content">
-                    <!--新闻导图尺寸：640*360//-->
-                    <article>
-                        <a href="http://www.dflzm.com.cn/index.php/news/newsinfo/481/219"
-                           title="顺应潮流，更环保的乘龙H7 LNG渣土车来了！" target="_blank" data-id="481">
-                            <span class="img_container"><img
-                                    src="http://dfcms.dflzm.com.cn/cmsuploads/lq_newscover_image/2569be19bfc83926f11f4ba25765b7a5.jpg"
-                                    alt="顺应潮流，更环保的乘龙H7 LNG渣土车来了！"><span class="ie7img"></span></span>
-                            <span class="txt_container"><h3>顺应潮流，更环保的乘龙H7 LNG渣土车来了！</h3><time pubdate="pubdate"
-                                                                                              datetime="2018-10-10">10月10日</time></span>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="http://www.dflzm.com.cn/index.php/news/newsinfo/479/219"
-                           title="东风柳汽第九届服务技能比武大赛 ------比武英雄帖（二）" target="_blank" data-id="479">
-                            <span class="img_container"><img
-                                    src="http://dfcms.dflzm.com.cn/cmsuploads/lq_newscover_image/e9c8e6868fd988112a7dd5ce059c92ea.jpg"
-                                    alt="东风柳汽第九届服务技能比武大赛 ------比武英雄帖（二）"><span class="ie7img"></span></span>
-                            <span class="txt_container"><h3>东风柳汽第九届服务技能比武大赛 ------比武英雄帖（二）</h3><time pubdate="pubdate"
-                                                                                                     datetime="2018-09-29">9月29日</time></span>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="http://www.dflzm.com.cn/index.php/news/newsinfo/475/219"
-                           title="当强劲动力遇上政策红利，13升580马力乘龙H7 2018款等你开回家" target="_blank" data-id="475">
-                            <span class="img_container"><img
-                                    src="http://dfcms.dflzm.com.cn/cmsuploads/lq_newscover_image/0eb33297962d447cac5a0b07817ab951.jpg"
-                                    alt="当强劲动力遇上政策红利，13升580马力乘龙H7 2018款等你开回家"><span class="ie7img"></span></span>
-                            <span class="txt_container"><h3>当强劲动力遇上政策红利，13升580马力乘龙H7 2018款等你开回家</h3><time
-                                    pubdate="pubdate" datetime="2018-09-29">9月29日</time></span>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="http://www.dflzm.com.cn/index.php/news/newsinfo/478/219"
-                           title="现场订车130台！巅峰动力13L580马力乘龙H7 2018款闪耀江西" target="_blank" data-id="478">
-                            <span class="img_container"><img
-                                    src="http://dfcms.dflzm.com.cn/cmsuploads/lq_newscover_image/d217eb9ac487190e6e5904aa88b40529.jpg"
-                                    alt="现场订车130台！巅峰动力13L580马力乘龙H7 2018款闪耀江西"><span class="ie7img"></span></span>
-                            <span class="txt_container"><h3>现场订车130台！巅峰动力13L580马力乘龙H7 2018款闪耀江西</h3><time
-                                    pubdate="pubdate" datetime="2018-09-29">9月29日</time></span>
-                        </a>
-                    </article>
-                </div>
-            </section>
-
-            <section class="column_indexvideo">
-                <header class="column_title">
-                    <h2>视频</h2>
-                </header>
-                <div class="column_content">
-                    <div class="indexvideo">
-                        <video preload="preload" controls
-                               poster="http://www.dflzm.com.cn/uploadfiles/20171116/15108285904655.jpg">
-                            <source src="http://www.dflzm.com.cn/uploadfiles/20171116/15108286546461.mp4"
-                                    type="video/mp4">
-                            <source src="http://www.dflzm.com.cn/uploadfiles/20171116/15108286815910.ogv"
-                                    type="video/ogg">
-                            <source src="http://www.dflzm.com.cn/uploadfiles/20171116/15108286245887.webm"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <span class="videotxt"
-                          style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171116/15108285904655.jpg);"
-                          data-bimg="true">
-						<h3>东风文化</h3>
-						<p><sapn>任何设计风格与技术上的突破，</sapn><span>均预示着柳汽不断创新与对卓越的极致追求。</span></p>
-						<span class="playerbtn">播放</span>
-					</span>
-
-                </div>
-            </section>
-            <section class="column_indexmedia">
-                <header class="column_title">
-                    <h2>社交媒体</h2>
-                </header>
-                <div class="column_content">
-                    <article>
-                        <a href="https://weibo.com/6415851298/GD4T3bGQL?from=page_1006066415851298_profile&wvr=6&mod=weibotime&type=comment#_rnd1539131185365"
-                           target="_blank" data-id="124" cig_tag="">
-                            <div class="txt_container">
-                                <p>风行T5搭载腾讯车联AI in Car车联网系统，可通过语音输入目的地，自动推荐最佳路线，让你避开所有旅途的塞车点，畅快出行~堵车？不存在的，趁着年轻，去浪吧！</p>
-                                <time pubdate="pubdate" datetime='2018-10-10'>10月10日</time>
-                                <span class="mediaform" data-bimg="true">
-								新浪微博								</span>
-                            </div>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="https://weibo.com/6415851298/GD5pwoo7Z?from=page_1006066415851298_profile&wvr=6&mod=weibotime&type=comment#_rnd1539131196194"
-                           target="_blank" data-id="125" cig_tag="">
-                            <div class="txt_container">
-                                <p>你若买车 我必倾力相助。购车享3成首付，2年低息，或选0月供金融贷，更劲享高达9000元置换补贴。风行CM7经典版，让你置在必得！</p>
-                                <time pubdate="pubdate" datetime='2018-10-10'>10月10日</time>
-                                <span class="mediaform" data-bimg="true">
-								新浪微博								</span>
-                            </div>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="https://mp.weixin.qq.com/s/xCKN4nQgyPQ0XQ4sjRzXEQ" target="_blank" data-id="126"
-                           cig_tag="">
-                            <div class="txt_container">
-                                <p>停车的位置太难记！根本不用自己记？因为它会指引你找到你的爱车。风行T5搭载手机APP远程寻车功能，记性靠不住，高智能更靠谱，一键锁定爱车定位，专治寻车难。</p>
-                                <time pubdate="pubdate" datetime='2018-10-10'>10月10日</time>
-                                <span class="mediaform" data-bimg="true">
-								微信								</span>
-                            </div>
-                        </a>
-                    </article>
-
-
-                </div>
-            </section>
-
-            <section class="column_aboutus">
-                <header class="column_title">
-                    <h2>品牌与服务</h2>
-                </header>
-                <div class="column_content">
-                    <ul>
-                        <li><a class="aboutus_1" data-bimg="true"
-                               href="http://www.dflzm.com.cn/index.php/product"><span>车型概览</span></a></li>
-                        <li><a class="aboutus_2" data-bimg="true"
-                               href="http://www.dflzm.com.cn/index.php/about/join"><span>招商加盟</span></a></li>
-                        <li><a class="aboutus_3" data-bimg="true"
-                               href="http://www.dflzm.com.cn/index.php/about/brand"><span>企业文化</span></a></li>
-                        <li><a class="aboutus_4" data-bimg="true"
-                               href="http://www.dflzm.com.cn/index.php/about/technology"><span>制造工艺</span></a></li>
-                        <li><a class="aboutus_5" data-bimg="true"
-                               href="http://www.dflzm.com.cn/index.php/recruit"><span>人才招聘</span></a></li>
-                        <li><a class="aboutus_6" data-bimg="true" href="http://www.dflzm.com.cn/index.php/about/design"><span>科研实力</span></a>
-                        </li>
-                    </ul>
-                </div>
-
-        </div>
-
+        </section>
     </div>
+
+</div>
 {include file="public/footer" /}

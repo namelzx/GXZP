@@ -32,6 +32,7 @@ return [
     'taglib_begin' => '{',
     // 标签库标签结束标记
     'taglib_end'   => '}',
+    'default_filter' => 'htmlspecialchars',
     'tpl_replace_string' => [
         '__STATIC__' => '/static',
         '__INDEX__' => '/static/index',

@@ -18,13 +18,16 @@ class Menu extends BaseModel
 
     public static function GetByList($data)
     {
-        if ($data['sort'] == "状态") {
-            $res = self::where('pid', 'neq', 0)->paginate($data['limit'], false, ['query' => $data['page']]);
-            return $res;
-        } else {
-            $res = self::where('status', $data['sort']);
-            $res = $res->where('pid', 'neq', 0)->paginate($data['limit'], false, ['query' => $data['page']]);
-            return $res;
+        if (empty($data['type'])){
+
         }
+            $wheredata=[];
+            if(!empty($data['type'])){
+                $wheredata['id']=$data['type'];
+            }
+            $res = self::where($wheredata);
+            $res = $res->where('pid', 'neq', 0)->order('sort')->paginate($data['limit'], false, ['query' => $data['page']]);
+            return $res;
+//        }
     }
 }

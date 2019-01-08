@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmls:og="http://opengraphprotocol.org/schema">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>广西融资租赁有限公司</title>
-    <meta name="keywords" content="广西融资租赁有限公司">
-    <meta name="description" content="广西融资租赁有限公司">
+    <title>{$sys.name}</title>
+    <meta name="keywords" content="{$sys.key}">
+    <meta name="description" content="{$sys.des}">
     <meta name="viewport" content="width=device-width">
     <meta name="baidu-site-verification" content="3tmA83r1L1"/>
     <meta http-equiv='X-UA-Compatible' content='IE=EDGE'>
@@ -12,400 +12,80 @@
     <script src="__INDEX__/js/jquery.js"></script>
     <script src="__INDEX__/js/jqtop.js"></script>
     <link href="__INDEX__/css/style.css" rel="stylesheet" type="text/css">
-    <link href="__INDEX__/css/index.css" rel="stylesheet" type="text/css">
-    <!--页面头部公共-->
-    <!--<script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
-    <script>
-        function getCookie(c_name) {
-            if (document.cookie.length > 0) {
-                c_start = document.cookie.indexOf(c_name + "=")
-                if (c_start != -1) {
-                    c_start = c_start + c_name.length + 1
-                    c_end = document.cookie.indexOf(";", c_start)
-                    if (c_end == -1) c_end = document.cookie.length
-                    return unescape(document.cookie.substring(c_start, c_end))
-                }
-            }
-            return ""
-        }
+    <link href="__INDEX__/css/{$controller}.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="__INDEX__/ico.ico" type="image/x-icon" />
 
-        function setCookie(c_name, value, expiredays) {
-            var exdate = new Date()
-            exdate.setDate(expiredays)
-            document.cookie = c_name + "=" + escape(value) + ";path=/" +
-                ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
-        }
-    </script>
+
+
 </head>
+<style>
+    .main{
+        background-size:100% 100%;
+        background-image: url("__INDEX__/images/01.jpg");
+    }
+    .header .brandinglogo a:first-child {
+        float: left;
+        margin: 0 -3px 0 0;
+        background-image: url('{$sys.logo}') !important;
+    }
+</style>
+
+
 <body class="page_index">
 <div class="wrapper_container" id="pagetop">
     <header class="header">
         <div class="header_content">
             <div class="brandinglogo">
-                <a href="http://www.fxauto.com.cn/">东风风行</a>
-                <a href="http://www.cltruck.com.cn/">乘龙汽车</a>
+                <a style="background-image: url(../images/2017page/logo_fx.png);" href="http://www.fxauto.com.cn/">东风风行</a>
+                <!--<a href="http://www.cltruck.com.cn/">乘龙汽车</a>-->
             </div>
             <menu class="menu">
                 <div class="menu_container">
                     <div class="menu_content">
                         <ul>
-                            <li><h3><a href="http://www.dflzm.com.cn/">首页</a></h3></li>
+                            <!--<li><h3><a href="http://www.dflzm.com.cn/">首页</a></h3></li>-->
+                            {volist name="menu" id="vo" key="k"}
                             <li class="havecontent">
-                                <h3><a href="http://www.dflzm.com.cn/index.php/about">关于我们</a><span
+                                {if $vo.pid==1}
+                                <a href="/{$vo.url}">
+                                <h3>{$vo.title}<span
                                         class="handheldlink"></span></h3>
+                                </a>
+                                {/if}
+                                {if $vo.muen==1}
                                 <div class="sec_content menu_about">
                                     <div class="menu_sec">
                                         <ul>
-                                            <li><a href="http://www.dflzm.com.cn/index.php/about"><span>公司概况</span></a>
-                                            </li>
+                                            {volist name="menu" id="nvo"}
+                                            {if $vo.id==$nvo.pid}
                                             <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/about/brand"><span>企业文化</span></a>
+                                                <style>
+                                                    .menu_content .menu_about  li .{$nvo.title} span.icon_img{
+                                                    width: 68%;
+                                                    height: 100%;
+                                                    background-size: 100% 100%;
+                                                    background: url({$nvo.images_url})  no-repeat;
+                                                    /* width: 100%; */
+                                                    height: 100%;
+                                                    background-size: 100% 100%;
+                                                    }
+                                                </style>
+                                                <a href="/{$nvo.url}/id/{$nvo.id}"><span>{$nvo.title}</span></a>
+                                                <div>  <span  data-bimg="true"></span></div>
                                             </li>
-                                            <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/about/history"><span>发展历程</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/about/design"><span>科研实力</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/about/technology"><span>制造工艺</span></a>
-                                            </li>
-                                            <li><a href="http://www.dflzm.com.cn/pv360/"
-                                                   target="_blank"><span>3D展厅</span></a></li>
-                                            <li><a href="http://www.dflzm.com.cn/zhanting/"
-                                                   target="_blank"><span>3D工厂漫游</span></a></li>
-                                            <li><a href="http://www.dflzm.com.cn/index.php/about/responsibility"><span>社会责任</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/about/honor"><span>资质荣誉</span></a>
-                                            </li>
-                                            <li><a href="http://www.dflzm.com.cn/index.php/about/join"><span>招商加盟</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/about/contactus"><span>联系我们</span></a>
-                                            </li>
+                                            {/if}
+                                            {/volist}
+
                                         </ul>
                                     </div>
                                 </div>
+                                {/if}
                             </li>
-                            <li class="havecontent">
-                                <h3><a href="http://www.dflzm.com.cn/index.php/news">新闻</a><span
-                                        class="handheldlink"></span></h3>
-                                <div class="sec_content menu_news">
-                                    <div class="menu_sec">
-                                        <ul>
-                                            <li><a href="http://www.dflzm.com.cn/index.php/news">热点动态</a></li>
-                                            <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/news/enterprise"><span>柳汽新闻</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/news/activity"><span>活动资讯</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/news/evaluating"><span>媒体评测</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="havecontent">
-                                <h3><a href="http://www.dflzm.com.cn/index.php/product">车型</a><span
-                                        class="handheldlink"></span></h3>
-                                <div class="sec_content menu_product">
-                                    <div class="menu_sec">
-                                        <div class="menusec_content">
-                                            <h4><a href="http://www.dflzm.com.cn/index.php/product#东风风行">东风风行</a><span
-                                                    class="handheldlink"></span></h4>
+                            {/volist}
 
-                                            <div class="menutre_content"><strong>轿车 </strong>
-
-
-                                                <ul>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/1"
-                                                           data-id="1"><h5>全新景逸S50</h5><span class="img_xc"
-                                                                                             data-bimg="true"
-                                                                                             style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171116/15108292618585.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>65,900</strong>起</span></p>
-                                                            <p class="note">新生代悦享中级车</p></a></li>
-                                                </ul>
-
-                                            </div>
-                                            <div class="menutre_content"><strong>SUV </strong>
-
-
-                                                <ul>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/23"
-                                                           data-id="23"><h5>风行T5</h5><span class="img_xc"
-                                                                                           data-bimg="true"
-                                                                                           style="background-image:url(http://dfcms.dflzm.com.cn/cmsuploads/carpic/6afae6e3fb196aa1a79efaa6568de17e.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>84,900</strong>起</span></p>
-                                                            <p class="note">AI T5 Hi 起来</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/2"
-                                                           data-id="2"><h5>全新景逸X5</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15108991813307.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>89,900</strong>起</span></p>
-                                                            <p class="note">舒适派高质感SUV</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/3"
-                                                           data-id="3"><h5>景逸X6</h5><span class="img_xc"
-                                                                                          data-bimg="true"
-                                                                                          style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109006449088.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>84,900</strong>起</span></p>
-                                                            <p class="note">舒适派全能7座SUV </p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/8"
-                                                           data-id="8"><h5>风行SX6</h5><span class="img_xc"
-                                                                                           data-bimg="true"
-                                                                                           style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109025698524.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>74,900</strong>起</span></p>
-                                                            <p class="note">加大号家用7座SUV</p></a></li>
-                                                </ul>
-
-                                            </div>
-                                            <div class="menutre_content"><strong>MPV </strong>
-
-
-                                                <ul>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/4"
-                                                           data-id="4"><h5>全新菱智M5</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109017157971.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>73,900</strong>起</span></p>
-                                                            <p class="note">新一代商务实用派</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/5"
-                                                           data-id="5"><h5>菱智M3</h5><span class="img_xc"
-                                                                                          data-bimg="true"
-                                                                                          style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109021951741.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>55,900</strong>起</span></p>
-                                                            <p class="note">全能实用伙伴</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/6"
-                                                           data-id="6"><h5>菱智V3 2019款</h5><span class="img_xc"
-                                                                                                data-bimg="true"
-                                                                                                style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109023227162.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>64,900</strong>起</span></p>
-                                                            <p class="note">城市物流实效派</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/7"
-                                                           data-id="7"><h5>风行S500</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109024302910.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>65,900</strong>起</span></p>
-                                                            <p class="note">全能家用7座MPV</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/9"
-                                                           data-id="9"><h5>风行F600</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109028973585.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>93,900</strong>起</span></p>
-                                                            <p class="note">新一代中级商务车</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/10"
-                                                           data-id="10"><h5>风行CM7</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109028253457.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>118,900</strong>起</span></p>
-                                                            <p class="note">首席公务舱</p></a></li>
-                                                </ul>
-
-                                            </div>
-                                            <div class="menutre_content"><strong>新能源 </strong>
-
-
-                                                <ul>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/21"
-                                                           data-id="21"><h5>风行S50EV</h5><span class="img_xc"
-                                                                                              data-bimg="true"
-                                                                                              style="background-image:url(http://dfcms.dflzm.com.cn/cmsuploads/carpic/a4ae237d53b4b98e1a94603316b20c5a.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>188,500</strong>起</span></p>
-                                                            <p class="note">先锋科技纯电轿车</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/22"
-                                                           data-id="22"><h5>菱智M5EV</h5><span class="img_xc"
-                                                                                             data-bimg="true"
-                                                                                             style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171123/15114104628627.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>169,900</strong>起</span></p>
-                                                            <p class="note">全能电动商务车</p></a></li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                        <div class="menusec_content">
-                                            <h4><a href="http://www.dflzm.com.cn/index.php/product#乘龙汽车">乘龙汽车</a><span
-                                                    class="handheldlink"></span></h4>
-
-                                            <div class="menutre_content"><strong>牵引车 </strong>
-
-
-                                                <ul>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/11"
-                                                           data-id="11"><h5>H7牵引车</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109053376702.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>328,000</strong>起</span></p>
-                                                            <p class="note">一部好卡车</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/14"
-                                                           data-id="14"><h5>T7牵引车</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109052952185.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>382,000</strong>起</span></p>
-                                                            <p class="note">源自北美 双重价值</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/15"
-                                                           data-id="15"><h5>H5牵引车</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109054281824.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>238,000</strong>起</span></p>
-                                                            <p class="note">轻装上阵，日进斗金</p></a></li>
-                                                </ul>
-
-                                            </div>
-                                            <div class="menutre_content"><strong>载货车 </strong>
-
-
-                                                <ul>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/12"
-                                                           data-id="12"><h5>H7载货车</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109051608140.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>326,000</strong>起</span></p>
-                                                            <p class="note">一部好卡车</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/16"
-                                                           data-id="16"><h5>H5载货车</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109054675194.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>207,500</strong>起</span></p>
-                                                            <p class="note">轻装上阵，日进斗金</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/18"
-                                                           data-id="18"><h5>新M3载货车</h5><span class="img_xc"
-                                                                                             data-bimg="true"
-                                                                                             style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109055604210.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>208,000</strong>起</span></p>
-                                                            <p class="note">轻快好省高颜值</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/20"
-                                                           data-id="20"><h5>L3载货车</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109056861097.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>124,000</strong>起</span></p>
-                                                            <p class="note">宽大享受 轻快赚钱</p></a></li>
-                                                </ul>
-
-                                            </div>
-                                            <div class="menutre_content"><strong>工程车 </strong>
-
-
-                                                <ul>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/13"
-                                                           data-id="13"><h5>H7工程车</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109052273251.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>301,000</strong>起</span></p>
-                                                            <p class="note">一部好卡车</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/17"
-                                                           data-id="17"><h5>H5工程车</h5><span class="img_xc"
-                                                                                            data-bimg="true"
-                                                                                            style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109054989599.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>292,600</strong>起</span></p>
-                                                            <p class="note">轻装上阵，日进斗金</p></a></li>
-                                                    <li>
-                                                        <a href="http://www.dflzm.com.cn/index.php/product/productinfo/19"
-                                                           data-id="19"><h5>新M3工程车</h5><span class="img_xc"
-                                                                                             data-bimg="true"
-                                                                                             style="background-image:url(http://www.dflzm.com.cn/uploadfiles/20171117/15109056215428.png)"></span>
-                                                            <p class="price"><span>官方指导价</span><span
-                                                                    class="ccolor">¥<strong>218,000</strong>起</span></p>
-                                                            <p class="note">安全 可靠 省油 高效</p></a></li>
-                                                </ul>
-
-                                            </div>
-                                            <div class="menutre_content"><strong>专用车 </strong>
-
-
-                                                <ul>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="havecontent">
-                                <h3><a href="http://www.dflzm.com.cn/index.php/service/deliver_service">销售与服务</a><span
-                                        class="handheldlink"></span></h3>
-                                <div class="sec_content menu_salesService">
-                                    <div class="menu_sec">
-                                        <ul>
-                                            <li><a href="http://www.cltruck.com.cn/carbuy/testdrive"
-                                                   target="_blank"><span>商用车购车支持</span></a></li>
-                                            <li><a href="http://www.cltruck.com.cn/service/promise"
-                                                   target="_blank"><span>商用车售后服务</span></a></li>
-                                            <li><a href="http://www.cltruck.com.cn/carbuy/dealers"
-                                                   target="_blank"><span>商用车经销商</span></a></li>
-                                            <li><a href="http://www.fxauto.com.cn/index.php/buy_testdrive/"
-                                                   target="_blank"><span>乘用车购车支持</span></a></li>
-                                            <li><a href="http://www.fxauto.com.cn/index.php/service_policy/"
-                                                   target="_blank"><span>乘用车售后服务</span></a></li>
-                                            <li><a href="http://www.fxauto.com.cn/index.php/buy_dealers"
-                                                   target="_blank"><span>乘用车经销商</span></a></li>
-                                            <li>
-                                                <a href="http://www.dflzm.com.cn/index.php/service/deliver_service"><span>免费送车服务</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
                         </ul>
                     </div>
-                    <!--<div class="hotlink">-->
-                        <!--<ul>-->
-                            <!--<li><a href="http://www.dflzm.com.cn/index.php/wonderful/video"><span>互动空间</span></a></li>-->
-                            <!--<li><a href="http://www.dflzm.com.cn/index.php/recruit"><span>人才招聘</span></a></li>-->
-                            <!--<li><a href="http://www.fxauto.com.cn/" target="_blank"><span>东风风行官网</span></a></li>-->
-                            <!--<li><a href="http://www.cltruck.com.cn/" target="_blank"><span>乘龙汽车官网</span></a></li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
-                    <!--<form name="sitesearch" class="sitesearch" action="http://www.dflzm.com.cn/index.php/news/search">-->
-                        <!--<input name="q" value="搜索" type="text">-->
-                        <!--<button class="search_btn">搜索</button>-->
-                    <!--</form>-->
-                <!--</div>-->
+
             </menu>
         </div>
     </header>

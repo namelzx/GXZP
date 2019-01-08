@@ -17,6 +17,7 @@ class Menu extends Base
     {
 
         $data = input('param.');
+        $data['status'] = 1;
         $Model = new MenuModel();
         if (empty($data['id'])) {
             $data['create_time'] = time();
@@ -26,6 +27,7 @@ class Menu extends Base
             return json($return);
         } else {
             $data['create_time'] = time();
+
             $res = $Model->where('id', $data['id'])->data($data)->update();
             return json($res);
 
@@ -58,6 +60,13 @@ class Menu extends Base
 
 
     public function PostDataBystatus()
+    {
+        $data = input('param.');
+        $Model = new MenuModel();
+        $res = $Model->where('id', $data['id'])->data($data)->update();
+        return json($res);
+    }
+    public function PostDataByMuen()
     {
         $data = input('param.');
         $Model = new MenuModel();

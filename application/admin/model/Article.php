@@ -16,13 +16,16 @@ class Article extends BaseModel
     }
     public static function GetByList($data)
     {
-        if ($data['sort'] == "状态") {
-            $res = self::with('Menu')->paginate($data['limit'], false, ['query' => $data['page']]);
-            return $res;
-        } else {
-            $res = self::with('Menu')->where('status', $data['sort']);
+//        if ($data['sort'] == "状态") {
+//            $res = self::with('Menu')->paginate($data['limit'], false, ['query' => $data['page']]);
+//            return $res;
+//        } else {
+        $wheredata=[];
+        if(!empty($data['type'])){
+            $wheredata['mid']=$data['type'];
+        }
+            $res = self::with('Menu')->where($wheredata);
             $res = $res->paginate($data['limit'], false, ['query' => $data['page']]);
             return $res;
-        }
     }
 }
